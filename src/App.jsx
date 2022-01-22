@@ -1,11 +1,12 @@
 import './App.css';
 
 function App() {
+    const num = Math.floor(Math.random() * 10);
+
     return (
         <div className="App">
-            <div className="content">
-                <h1>App Content</h1>
-            </div>
+            <p>{num}</p>
+            <button onClick={() => {window.location.reload()}}>Refresh page</button>
         </div>
     );
 }
