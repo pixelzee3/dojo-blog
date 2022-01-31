@@ -1,5 +1,5 @@
 import BlogList from './BlogList';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
   const [blogs, setBlogs] = useState([
@@ -23,10 +23,17 @@ const Home = () => {
     },
   ]);
 
+  const [name, setName] = useState('mario');
+
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
   };
+
+  useEffect(() => {
+    console.log('useEffect ran.');
+    console.log(name);
+  }, [name]);
 
   return (
     <div className="home">
@@ -36,12 +43,13 @@ const Home = () => {
         title="Mario's blogs!"
         handleDelete={handleDelete}
       />
-      {/* Make a BlogList component that only shows blogs written by yoshi */}
       <BlogList
         blogs={blogs.filter((blog) => blog.author === 'yoshi')}
         title="Yoshi's blogs!"
         handleDelete={handleDelete}
       />
+      <button onClick={() => setName('luigi')}>Change Name</button>
+      <p>{name}</p>
     </div>
   );
 };
