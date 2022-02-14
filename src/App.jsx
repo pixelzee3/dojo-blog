@@ -5,8 +5,6 @@ import Create from './Create';
 import BlogDetails from './BlogDetails';
 
 function App() {
-  const num = Math.floor(Math.random() * 10);
-
   return (
     <Router>
       <div className="App">
